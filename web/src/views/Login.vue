@@ -57,14 +57,19 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["login", "fetchRooms"]),
+    ...mapActions(["login", "fetchRooms", "errorMessage", "successMessage"]),
     async submit() {
-      await this.login({
-        username: this.username,
-        password: this.password
-      });
-      await this.fetchRooms();
-      this.$router.push("/");
+      try {
+        await this.login({
+          username: this.username,
+          password: this.password
+        });
+        await this.fetchRooms();
+        this.successMessage("Welcome Back!");
+        this.$router.push("/");
+      } catch {
+        this.errorMessage("Username or password is incorrect");
+      }
     },
 
     clear() {

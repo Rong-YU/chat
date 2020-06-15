@@ -19,7 +19,7 @@ const routes = [
 			{ path: "/create", component: CreateRoom },
 			{ path: "/login", component: Login, meta: { isPublic: true } },
 			{ path: "/signup", component: SignUp, meta: { isPublic: true } },
-			{ path: "/room", component: RoomList },
+			{ path: "/", component: RoomList },
 		],
 	},
 ]

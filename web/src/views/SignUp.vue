@@ -69,14 +69,26 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["signup"]),
+    ...mapActions([
+      "signup",
+      "login",
+      "fetchRooms",
+      "errorMessage",
+      "successMessage"
+    ]),
     async submit() {
-      await this.signup({
-        nickname: this.nickname,
-        username: this.username,
-        password: this.password
-      });
-      this.$router.push("/");
+      try {
+        await this.signup({
+          nickname: this.nickname,
+          username: this.username,
+          password: this.password
+        });
+        await this.fetchRooms();
+        this.successMessage(`Hey! ${this.nickname} Let's chat!`);
+        this.$router.push("/");
+      } catch (error) {
+        this.errorMessage("Username already existed！");
+      }
     },
 
     clear() {

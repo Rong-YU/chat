@@ -43,15 +43,16 @@ module.exports = (app) => {
 				room.remove()
 				return res.sendStatus(200)
 			}
+			return res.sendStatus(400)
 		}
 		return res.sendStatus(400)
 	})
 
 	app.post("/api/join/:id", async (req, res) => {
-		console.log("im in")
 		const room = await Room.findById(req.params.id)
-		if (room && !(room in req.user.joinedRoom)) {
-			console.log("有房间，且未加入")
+		console.log("已经加入的房间", req.user.joinedRoom)
+		if (room && !req.user.joinedRoom.includes(req.params.id)) {
+			console.log("未加入")
 			if (room.password) {
 				if (!req.body.password || req.body.password !== room.password) {
 					return res.sendStatus(400)

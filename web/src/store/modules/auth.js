@@ -10,8 +10,7 @@ const getters = {
 const actions = {
 	async signup({ commit }, user) {
 		const res = await axios.post("signup", user)
-		axios.defaults.defaults.headers.common["Authorization"] =
-			res.data.session
+		axios.defaults.headers.common["Authorization"] = res.data.session
 		commit("setUser", res.data)
 	},
 	async login({ commit }, user) {
