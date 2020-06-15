@@ -14,17 +14,14 @@ const getters = { snackbar: (state) => state.snackbar }
 const actions = {
 	async successMessage({ commit }, message) {
 		const snackbar = { showing: true, text: message, color: "success" }
-		console.log(snackbar)
 		commit("setSnackbar", snackbar)
 	},
 	async errorMessage({ commit }, message) {
 		const snackbar = { showing: true, text: message, color: "error" }
-		console.log(snackbar)
 		commit("setSnackbar", snackbar)
 	},
 	async infoMessage({ commit }, message) {
 		const snackbar = { showing: true, text: message, color: "info" }
-		console.log(snackbar)
 		commit("setSnackbar", snackbar)
 	},
 }

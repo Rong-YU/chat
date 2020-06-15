@@ -9,7 +9,7 @@ import SocketIO from "socket.io-client"
 
 Vue.use(
 	new VueSocketIO({
-		debug: true,
+		debug: false,
 		// 服务器端地址
 		connection: SocketIO(process.env.VUE_APP_SOCKET_URL || "/"),
 	})
