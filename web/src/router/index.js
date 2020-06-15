@@ -2,7 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import Main from "../views/Main.vue"
 import Login from "../views/Login.vue"
-import Chat from "../views/Chat.vue"
+import ChatRoom from "../views/ChatRoom.vue"
 import SignUp from "../views/SignUp.vue"
 import CreateRoom from "../views/CreateRoom.vue"
 import RoomList from "../views/RoomList.vue"
@@ -15,7 +15,7 @@ const routes = [
 		name: "main",
 		component: Main,
 		children: [
-			{ path: "/chat/:id/", component: Chat, props: true },
+			{ path: "/chat/:id/", component: ChatRoom, props: true },
 			{ path: "/create", component: CreateRoom },
 			{ path: "/login", component: Login, meta: { isPublic: true } },
 			{ path: "/signup", component: SignUp, meta: { isPublic: true } },
